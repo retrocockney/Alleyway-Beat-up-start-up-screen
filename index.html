@@ -14,7 +14,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    min-height: 100vh;
   }
 
   h1 {
@@ -58,6 +58,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: transform 0.2s;
   }
 
   .character img {
@@ -69,6 +70,7 @@
 
   .character.selected {
     border-color: #ff3d00;
+    transform: scale(1.1);
   }
 
   @media (max-width: 500px) {
@@ -127,11 +129,13 @@
 
   let selectedCharacter = null;
 
+  // Go to character select
   startButton.addEventListener('click', () => {
     startScreen.classList.add('hidden');
     characterScreen.classList.remove('hidden');
   });
 
+  // Select a character
   characters.forEach(char => {
     char.addEventListener('click', () => {
       characters.forEach(c => c.classList.remove('selected'));
@@ -140,16 +144,16 @@
     });
   });
 
+  // Start game
   playButton.addEventListener('click', () => {
     if (!selectedCharacter) {
       alert('Please select a character!');
       return;
     }
     alert(`Starting game with: ${selectedCharacter}`);
-    // Here you can start your game logic / load Level 1
+    // Here you would load Level 1 or start your game logic
   });
 </script>
 
 </body>
 </html>
-
